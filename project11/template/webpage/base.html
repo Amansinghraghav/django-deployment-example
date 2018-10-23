@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Base</title>
+  </head>
+  <body>
+    <h1>Hello Guy! Welcome in Base File</h1>
+    <div class="container">
+      <table>
+        <tr>
+          <td> <a href="{% url "index" %}">Django</a></td>
+          <td> <a href="{% url "admin:index" %}">Admin</a></td>
+          <td> <a href="{% url "webpage:register" %}">Register</a></td>
+
+          {% if user.is_authenticated %}
+            <td>
+              <a href="{% url 'logout' %}">Logout</a>
+          </td>
+          {% else %}
+          <td>
+            <a href="{% url 'webpage:user_login' %}">Login</a>
+          </td>
+          {% endif %}
+        </tr>
+      </table>
+    </div>
+    <div class="container">
+      {% block body_block %}
+      {% endblock %}
+
+    </div>
+  </body>
+</html>
